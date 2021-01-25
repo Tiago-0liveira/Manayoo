@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "es5",                          
+    "module": "commonjs",                     
+    "strict": true,                           
+    "esModuleInterop": true,                  
+    "skipLibCheck": true,                     
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "outDir": "./dist/",
+    "removeComments": true,
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "preserveConstEnums": true
+  },
+  "include":[ 
+      "./src/**/*"
+  ]
+}

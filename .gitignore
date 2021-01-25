@@ -2,7 +2,7 @@
 dist/
 **/node_modules
 out/
-src/renderer
+src/renderer/node_modules
 # Logs
 logs
 *.log

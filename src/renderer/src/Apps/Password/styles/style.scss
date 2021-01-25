@@ -1,0 +1,103 @@
+@import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+
+.bg {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	clip-path: polygon(0 34%, 100% 4%, 100% 67%, 0 93%);
+
+	.loading-svg {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.login-div {
+		z-index: 1;
+		width: 340px;
+		height: 300px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		border-radius: 10px;
+		.app-icon {
+			position: absolute;
+			top: -9%;
+			left: -8%;
+			transform: translate(-8%, -9%);
+			width: 64px;
+			z-index: 11;
+		}
+		.h3-err {
+			width: 90%;
+			text-align: left;
+			padding-left: 4px;
+			margin-left: 4px;
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -40%);
+		}
+		.login-box {
+			width: 340px;
+			height: 300px;
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -40%);
+			h1 {
+				position: absolute;
+				float: left;
+				font-size: 40px;
+				z-index: 0;
+				top: 10%;
+				left: 10%;
+				transform: translate(-10%, -10%);
+			}
+			.textbox {
+				position: absolute;
+				width: 90%;
+				overflow: hidden;
+				font-size: 20px;
+				padding: 8px 0;
+				margin: 8px 0;
+				top: 60%;
+				left: 50%;
+				transform: translate(-50%, -60%);
+				i {
+					width: 26px;
+					float: left;
+					text-align: center;
+				}
+				input {
+					border: none;
+					outline: none;
+					background: none;
+					font-size: 18px;
+					width: 80%;
+					float: left;
+					margin: 0 10px;
+				}
+			}
+			.btn {
+				position: absolute;
+				width: 90%;
+				background: none;
+				padding: 5px;
+				font-size: 18px;
+				cursor: pointer;
+				margin: 12px 0;
+				border-radius: 5px;
+				font-weight: bold;
+				transition: all 0.3s;
+				top: 85%;
+				left: 50%;
+				transform: translate(-50%, -85%);
+				&:active {
+					outline: none;
+				}
+			}
+		}
+	}
+}
