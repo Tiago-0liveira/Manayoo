@@ -1,0 +1,14 @@
+{
+  "applications": {
+    "Password": {
+      "darkerColor":"#f8c291"
+    },
+    "Main": {}
+  },
+  "global": {
+    "backgroundColor": "#ffffff",
+    "loadingColor": "#3A84EE",
+    "mainColor": "#fad390",
+    "fontColor": "#000000"
+  }
+}

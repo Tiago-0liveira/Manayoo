@@ -7,16 +7,19 @@
 		"start": "webpack serve --config ./webpack.config.js --mode development",
 		"build": "webpack --mode production"
 	},
-	"keywords": [],
 	"author": "",
+	"keywords": [],
 	"license": "ISC",
 	"dependencies": {
 		"@material-ui/core": "^4.11.2",
 		"@material-ui/icons": "^4.11.2",
 		"@types/crypto-js": "^4.0.1",
 		"crypto-js": "^4.0.0",
+		"eslint": "^7.19.0",
+		"fs": "0.0.1-security",
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
+		"styled-components": "^5.2.1",
 		"util": "^0.12.3"
 	},
 	"devDependencies": {

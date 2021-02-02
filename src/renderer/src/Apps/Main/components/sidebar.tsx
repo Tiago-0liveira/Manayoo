@@ -17,9 +17,12 @@ export default class SideBar extends Component<SideBarProps, SideBarState> {
     render() {
         return (
             <div className="sidebar">
-                {apps.map(app =>
-                    <div className="app">
-                        <SideBarBaseComponent name={app.name} app={app.app} icon={app.icon} />
+                {apps.map((app, i) =>
+                    <div className="app" data-app-name={app.name} key={i}>
+                        <SideBarBaseComponent name={app.name} app={app.app} Icon={app.icon} >
+                            <app.icon className="app-icon" size="64"/>
+                            <p className="app-name">{app.name}</p>
+                        </SideBarBaseComponent>
                     </div>
                 )}
             </div>

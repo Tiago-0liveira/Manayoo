@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { ConfigContext } from "./../../Config"
+import { ConfigContext } from "../../Config"
 import { PasswordProps, PasswordState } from './types';
 import LoadingSvg from "./../img-svg/loadingSvg";
 import "./styles/style.scss"
 import axios from "axios"
 const appIcon = require("../../../../../public/app-icon.png")
-import { decrypt, encrypt, makeid } from "./../../helpers/encryption"
+import { decode, encode } from "./../../helpers/encryption"
 const appName = "Password"
 
 let password: string
@@ -13,7 +13,7 @@ export default class Password extends Component<PasswordProps, PasswordState> {
     static contextType = ConfigContext
     constructor(props: PasswordProps) {
         super(props)
-        this.props.loginHandler(true)
+        /* this.props.loginHandler(true) REMOVE ON PROD */
         this.state = {
             ...props,
             password: "",
@@ -25,13 +25,13 @@ export default class Password extends Component<PasswordProps, PasswordState> {
     componentDidMount = () => {
         document.addEventListener("keydown", this.keydownHandler)
         axios.get("http://localhost:2000/getAppConfig").then(res => {
-            let thing = res.data
-            const div = thing.split(thing.slice(-12))
-            const data = JSON.parse(decrypt(div[0], div[1]))
-            password = data.password
+            let data = decode(res.data);
             delete data.password
-            this.setState({ AppConfig: data, loading: false })
-        }).catch(err => { })
+            this.setState({
+                AppConfig: data,
+                loading: false
+            })
+        }).catch(err => { console.error(err)})
     }
     componentWillUnmount = () => document.removeEventListener("keydown", this.keydownHandler)
     validatePass = (e: React.MouseEvent<HTMLInputElement, MouseEvent>, getLang: any) => {
@@ -44,19 +44,13 @@ export default class Password extends Component<PasswordProps, PasswordState> {
     }
     createPass = (e: React.MouseEvent<HTMLInputElement, MouseEvent>, getLang: any) => {
         if (this.state.password.length >= 8) {
-            const { encrypted, key } = encrypt(JSON.stringify({
+            const data = encode({
                 ...this.state.AppConfig,
                 password: this.state.password,
                 firstTime: false
-            }))
-            const rand = makeid(12)
-            console.log({
-                data: `${encrypted}${rand}${key}${rand}`
             })
             axios.post("http://localhost:2000/updateAppConfig",
-                {
-                    data: `${encrypted}${rand}${key}${rand}`
-                }).then(res => {
+                data).then(res => {
                     res.data.status && this.props.loginHandler(true)
                 }).catch(err => err && console.error(err))
         } else {
@@ -75,7 +69,7 @@ export default class Password extends Component<PasswordProps, PasswordState> {
                 <div className="login-div" style={{ background: "#152b41cc" }}>
                     <div className="login-box" style={{ color: context.getTheme().global.fontColor }}>
                         <h1 style={{ borderBottom: `6px solid ${context.getTheme().global.mainColor}` }}>{context.getLang(appName).applications[appName][this.state.AppConfig?.firstTime ? "Welcome" : "Password"]}</h1>
-                        {this.state.err !== "" && <h3 className="h3-err" style={{ color: "#f12121", borderLeft: "2px solid #f1212198" }}>{this.state.err}</h3>}
+                        {this.state.err !==  "" && <h3 className="h3-err" style={{ color: "#f12121", borderLeft: "2px solid #f1212198" }}>{this.state.err}</h3>}
                         <div className="textbox" style={{ borderBottom: `4px solid ${context.getTheme().global.mainColor}` }}>
                             <i className="fas fa-lock"></i>
                             <input style={{ color: context.getTheme().global.fontColor }} onChange={(e) => {

@@ -1,9 +1,9 @@
-// eslint-disable-next-line
 import * as path from 'path';
 import * as url from 'url';
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserWindow, app, globalShortcut } from 'electron';
-import "./data/index"
+import './data/index';
 
 let mainWindow: Electron.BrowserWindow | null;
 
@@ -19,7 +19,7 @@ function createWindow(): void {
     },
   });
   mainWindow.setMenu(null);
-  globalShortcut.register("F11", () => {
+  globalShortcut.register('F11', () => {
     mainWindow && mainWindow.webContents.openDevTools();
   });
   // and load the index.html of the app.
@@ -28,7 +28,7 @@ function createWindow(): void {
       pathname: path.join(__dirname, './client/index.html'),
       protocol: 'file:',
       slashes: true,
-    })
+    }),
   ).finally(() => { /* no action */ });
 
   // Emitted when the window is closed.

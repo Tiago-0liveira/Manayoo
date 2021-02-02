@@ -1,0 +1,16 @@
+{
+  "applications": {
+    "Password": {
+      "Password": "Palavra-Passe",
+      "Submit": "Verificar",
+      "Welcome": "Bem vindo",
+      "New": "Nova",
+      "CreatePass": "Criar Password"
+    },
+    "Main": {}
+  },
+  "errors": {
+    "Wrong": "Password errada!",
+    "Length": "Password pequena!"
+  }
+}

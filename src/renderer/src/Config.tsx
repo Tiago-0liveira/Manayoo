@@ -1,7 +1,11 @@
 import React from "react"
 import { Config, appName } from "./types"
 import { defaultLang, defaultTheme } from "./typeDefaults"
-
+import {decode} from "./helpers/encryption"
+import {fun} from "./helpers/externalLoader"
+import axios from "axios"
+fun()
+console.log("fixe")
 type ConfigProps = {}
 type ConfigState = Config
 
@@ -11,38 +15,10 @@ const conf: Config = {
         theme: "dark"
     },
     Lang: {
-        enEN: defaultLang,
-        ptPT: {
-            applications: {
-                Password: {
-                    Password: "Palavra-Passe",
-                    Submit: "Verificar",
-                    Welcome: "Bem vindo",
-                    New: "Nova",
-                    CreatePass: "Criar Password"
-                },
-                Main: {}
-            },
-            errors: {
-                Wrong: "Password errada!",
-                Length: "Password pequena!"
-            }
-        }
+        enEN: defaultLang
     },
     Themes: {
-        dark: defaultTheme,
-        light: {
-            applications: {
-                Password: { darkerColor: "#f8c291" },
-                Main: {}
-            },
-            global: {
-                backgroundColor: "#ffffff",
-                loadingColor: "#3A84EE",
-                mainColor: "#fad390",
-                fontColor: "#000000"
-            }
-        }
+        dark: defaultTheme
     },
     updateState: (newState: Config) => { },
     getLang: (appName: appName) => { return defaultLang },
@@ -67,6 +43,9 @@ export default class ConfigComponent extends React.Component<ConfigProps, Config
     getLang = (appName: appName) => {
         let lang: string = "enEN"
         if (this.state.Lang[this.state.Config.language.replace("-", "")] !== undefined) { lang = this.state.Config.language.replace("-", "") }
+        axios.get("http://localhost:2000/getAppConfig").then(res => {
+            const data = decode(res.data)
+        })
         return this.state.Lang[this.state.Config.language.replace("-", "")]/* this.state.Lang["enEN"]  */
     }
 

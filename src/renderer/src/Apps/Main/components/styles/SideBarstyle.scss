@@ -1,14 +1,20 @@
 .sidebar {
 	height: 100%;
-	width: 100px;
-    position: absolute;
-    background-color: red;
-    .app {
-        position: absolute;
-        display: flex;
-        justify-content: center;
+	width: 120px;
+	position: absolute;
+	background-color: red;
+	.app {
+		position: absolute;
+		display: flex;
+		justify-content: center;
         align-items: center;
-        background-color: aqua;
+        text-align: center;
+		/* background-color: aqua; */
         margin: 10px;
-    }
+        .app-icon {
+            background-color: transparent;
+            width: 64px;
+            margin: 2px;
+        }
+	}
 }

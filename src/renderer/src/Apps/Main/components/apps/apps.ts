@@ -7,8 +7,6 @@ interface App {
 }
 
 const Apps: App[] = [
-    { name: "PassManager", app: PassManager, icon: PasswordManagerIcon },
-    { name: "PassManager", app: PassManager, icon: PasswordManagerIcon },
     { name: "PassManager", app: PassManager, icon: PasswordManagerIcon }
 ]
 
